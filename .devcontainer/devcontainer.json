@@ -1,0 +1,28 @@
+{
+  "name": "Livestock SPV Development",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:16",
+  "forwardPorts": [3000, 5000, 5432],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend",
+      "onAutoForward": "openPreview"
+    },
+    "5000": {
+      "label": "Backend API"
+    },
+    "5432": {
+      "label": "PostgreSQL"
+    }
+  },
+  "postCreateCommand": "cd backend && npm install",
+  "postStartCommand": "sudo service postgresql start",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-json",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
