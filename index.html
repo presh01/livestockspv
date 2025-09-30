@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Fattening SPV - Agricultural Investment Cooperative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016;
+            --secondary: #D4AF37;
+            --accent: #8B4513;
+            --background: #FAF7F0;
+            --text: #2C2C2C;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.9), rgba(139, 69, 19, 0.8)), 
+                        url('resources/hero-livestock.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .counter {
+            font-family: 'Source Code Pro', monospace;
+            font-weight: 500;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold gradient-text">LivestockSPV</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-yellow-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-yellow-600">About SPV</a>
+                    <a href="#apply" class="nav-link text-gray-700 hover:text-yellow-600">Apply</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-yellow-600">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-yellow-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20"></div>
+        <div class="floating-element absolute bottom-32 right-16 w-16 h-16 bg-green-400 rounded-full opacity-30" style="animation-delay: -2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6" style="font-family: 'Playfair Display', serif;">
+                        <span id="typed-text"></span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
+                        Join our cooperative Special Purpose Vehicle for sustainable livestock fattening investments. 
+                        Professional management, transparent operations, and consistent returns.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button onclick="scrollToApply()" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg">
+                            Start Application
+                        </button>
+                        <button onclick="scrollToAbout()" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-green-800 transition-all duration-300">
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <!-- Key Metrics -->
+                    <div class="grid grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="counter text-3xl font-bold text-yellow-400" data-target="2500">0</div>
+                            <div class="text-sm opacity-80">Active Investors</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="counter text-3xl font-bold text-yellow-400" data-target="18">0</div>
+                            <div class="text-sm opacity-80">% Annual Returns</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="counter text-3xl font-bold text-yellow-400" data-target="500">0</div>
+                            <div class="text-sm opacity-80">Cattle Under Management</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="glass-card rounded-2xl p-8 shadow-2xl">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Quick Application</h3>
+                        <form id="quick-application" class="space-y-4">
+                            <input type="text" placeholder="Full Name" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none">
+                            <input type="text" placeholder="National ID Number" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none">
+                            <select class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none">
+                                <option>Employment Status</option>
+                                <option>Employed</option>
+                                <option>Self-Employed</option>
+                                <option>Retired</option>
+                                <option>Other</option>
+                            </select>
+                            <button type="submit" class="btn-primary w-full text-white py-3 rounded-lg font-semibold">
+                                Get Started
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" style="font-family: 'Playfair Display', serif;">
+                    About Our SPV
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our Special Purpose Vehicle provides a structured, regulated approach to livestock fattening investments, 
+                    combining traditional agricultural expertise with modern financial management.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-gray-800">Why Choose Our Cooperative?</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Regulated Structure</h4>
+                                <p class="text-gray-600">Fully compliant SPV structure with transparent governance and regular audits.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Proven Returns</h4>
+                                <p class="text-gray-600">Consistent 15-18% annual returns through professional livestock management.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Secure Investment</h4>
+                                <p class="text-gray-600">Insurance coverage and diversified livestock portfolio for risk mitigation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.marawood.com/a7ca32335fc8c9a6f6057738e863ba64dfcc358d.jpg" 
+                         alt="Modern Livestock Facility" 
+                         class="rounded-2xl shadow-2xl w-full h-96 object-cover">
+                </div>
+            </div>
+            
+            <!-- Facility Showcase -->
+            <div class="splide" id="facility-carousel">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="https://kimi-web-img.moonshot.cn/img/www.gokeagri.com/278a966e2e01fbf46a4db452a0dc3f24f0a9ec86.jpg" 
+                                 alt="Modern Facility" class="w-full h-64 object-cover rounded-lg">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="https://kimi-web-img.moonshot.cn/img/agrotel.eu/a5433a70c4c76d7fea9b2cda90b38f17295b0241.jpg" 
+                                 alt="Feeding System" class="w-full h-64 object-cover rounded-lg">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="https://kimi-web-img.moonshot.cn/img/www.marawood.com/394dc7ac954cc64a25e822469266451afc6b1d0b.jpg" 
+                                 alt="Cattle Management" class="w-full h-64 object-cover rounded-lg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Section -->
+    <section id="apply" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text" style="font-family: 'Playfair Display', serif;">
+                    Apply for Membership
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Join our cooperative and start your agricultural investment journey
+                </p>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-8 shadow-2xl">
+                <form id="application-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="fullName" required 
+                                   class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">National ID Number *</label>
+                            <input type="text" id="nin" required 
+                                   class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none"
+                                   placeholder="e.g., 12345678901">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Employment Status *</label>
+                            <select id="employmentStatus" required 
+                                    class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none">
+                                <option value="">Select Status</option>
+                                <option value="employed">Employed</option>
+                                <option value="self-employed">Self-Employed</option>
+                                <option value="retired">Retired</option>
+                                <option value="student">Student</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Location *</label>
+                            <input type="text" id="location" required 
+                                   class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none"
+                                   placeholder="City, State">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-4">Investment Preference *</label>
+                        <div class="space-y-4">
+                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-green-300 cursor-pointer transition-colors">
+                                <input type="radio" name="investmentOption" value="outright" class="mr-4 text-green-600">
+                                <div>
+                                    <div class="font-semibold">Option A: Outright Purchase</div>
+                                    <div class="text-sm text-gray-600">Purchase cattle outright (Minimum ₦500,000)</div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-green-300 cursor-pointer transition-colors">
+                                <input type="radio" name="investmentOption" value="financing" class="mr-4 text-green-600">
+                                <div>
+                                    <div class="font-semibold">Option B: Financing Option</div>
+                                    <div class="text-sm text-gray-600">Monthly repayment (Minimum ₦50,000/month)</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="credit-consent" class="hidden">
+                        <label class="flex items-start space-x-3 p-4 bg-yellow-50 rounded-lg">
+                            <input type="checkbox" id="creditConsent" class="mt-1 text-green-600">
+                            <div class="text-sm">
+                                <div class="font-semibold text-yellow-800">Credit Search Consent *</div>
+                                <div class="text-yellow-700">I agree to a credit search being performed as part of the financing application process.</div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" id="submit-btn" 
+                                class="btn-primary text-white px-12 py-4 rounded-lg font-semibold text-lg">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text" style="font-family: 'Playfair Display', serif;">
+                Ready to Start Your Investment Journey?
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Join hundreds of successful investors in our livestock fattening cooperative.
+            </p>
+            <button onclick="scrollToApply()" class="btn-primary text-white px-12 py-4 rounded-lg font-semibold text-lg">
+                Apply Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold gradient-text mb-4">LivestockSPV</div>
+                <p class="text-gray-400 mb-4">© 2025 Livestock Fattening SPV Cooperative. All rights reserved.</p>
+                <p class="text-sm text-gray-500">Regulated agricultural investment platform | Secure | Transparent | Profitable</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

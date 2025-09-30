@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Received - Livestock Fattening SPV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5016;
+            --secondary: #D4AF37;
+            --accent: #8B4513;
+            --background: #FAF7F0;
+            --text: #2C2C2C;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .success-animation {
+            animation: successPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .countdown-circle {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            animation: countdown 24h linear forwards;
+        }
+        
+        @keyframes countdown {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .status-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold gradient-text">LivestockSPV</div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-600">Application Status</div>
+                    <div class="flex items-center space-x-2">
+                        <div class="status-dot w-3 h-3 bg-green-400 rounded-full"></div>
+                        <span class="text-sm font-semibold text-green-600">Received</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center pt-16 px-4">
+        <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20"></div>
+        <div class="floating-element absolute bottom-32 right-16 w-16 h-16 bg-green-400 rounded-full opacity-30" style="animation-delay: -2s;"></div>
+        
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Success Animation -->
+            <div class="success-animation mb-8">
+                <div class="w-32 h-32 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold mb-4 gradient-text" style="font-family: 'Playfair Display', serif;">
+                    Application Received!
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Thank you for your interest in our Livestock Fattening SPV. Your application has been successfully submitted.
+                </p>
+            </div>
+
+            <!-- Status Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">24-Hour Review</h3>
+                    <p class="text-gray-600 text-sm">Our team will review your application within 24 hours</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Waiting List</h3>
+                    <p class="text-gray-600 text-sm">You've been placed on our priority waiting list</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Email Update</h3>
+                    <p class="text-gray-600 text-sm">We'll notify you via email once your application is processed</p>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-6">Review Timeline</h3>
+                <div class="flex items-center justify-center mb-6">
+                    <div class="relative w-32 h-32">
+                        <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke="#E5E7EB" stroke-width="8" fill="none"></circle>
+                            <circle cx="50" cy="50" r="45" stroke="#10B981" stroke-width="8" fill="none" 
+                                    class="countdown-circle"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-gray-800" id="countdown-hours">24</div>
+                                <div class="text-sm text-gray-600">hours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">Estimated time remaining for application review</p>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-6 text-center">What Happens Next?</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">1</div>
+                        <h4 class="font-semibold mb-2">Review</h4>
+                        <p class="text-sm text-gray-600">Our team reviews your application and documents</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">2</div>
+                        <h4 class="font-semibold mb-2">Verification</h4>
+                        <p class="text-sm text-gray-600">We verify your information and conduct necessary checks</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-yellow-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">3</div>
+                        <h4 class="font-semibold mb-2">Approval</h4>
+                        <p class="text-sm text-gray-600">You'll receive approval notification and access credentials</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">4</div>
+                        <h4 class="font-semibold mb-2">Dashboard Access</h4>
+                        <p class="text-sm text-gray-600">Access your personalized investment dashboard</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='index.html'" 
+                        class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
+                    Return to Home
+                </button>
+                <button onclick="showContactInfo()" 
+                        class="border-2 border-green-600 text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition-all duration-300">
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // Initialize countdown timer
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountdown();
+        });
+    </script>
+</body>
+</html>
